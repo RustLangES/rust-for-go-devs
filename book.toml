@@ -1,0 +1,13 @@
+[book]
+authors = ["Phosphorus-M"]
+language = "es"
+languages = ["es", "en"]
+multilingual = true
+src = "src"
+title = "Rust para Go Devs"
+
+
+[language.en]
+name = "English"
+[language.es]
+name = "Español"
