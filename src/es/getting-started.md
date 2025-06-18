@@ -53,6 +53,11 @@ capítulo [Empezando][getting-started] en el libro
 [El Lenguaje de Programación Rust][rs-book], o 
 [visita la página de instalación][installation-website] en [rust-lang.org].
 
+También dependiendo del editor de código que utilicemos es posible que deseemos 
+instalar `rust-analyzer` el cual es el LSP del lenguaje y permite ver la 
+inferencia de tipo directamente en el editor, nos permite refactorizar código y
+nos brinda sugerencias entre otras muchas funcionalidades. Rust Analyzer 
+dependiendo del IDE ya viene integrado, en VSCode por ejemplo hay una extensión.
 
 [playground]: https://play.rust-lang.org/
 [explorer]: https://rustexplorer.com/
