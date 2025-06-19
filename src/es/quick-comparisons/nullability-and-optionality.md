@@ -9,7 +9,8 @@ con respecto a este tema.
 
 En Go suele representarse la nubilidad de esta forma:
 ```go
-var some = 2
+some := 2 // short declaration
+var some int = 2 
 var none *int = nil
 ```
 
@@ -17,8 +18,11 @@ Hay varias formas de declarar la variable.
 Esto en Rust se representaria como:
 
 ```rust
-let some: Option<i32> = Some(1);
-let none: Option<i32> = None;
+let some = 1; // Short
+let some: i32 = 1; // declaración con tipo
+let some = Some(1); // Con inferencia
+let some: Option<i32> = Some(1); // declaración con tipo
+let none: Option<i32> = None; // única forma de declarar un valor nulleable
 ```
 
 Sin embargo el valor en el caso de Rust reside en el interior, esta envuelto.
