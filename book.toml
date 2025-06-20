@@ -11,3 +11,7 @@ title = "Rust para Go Devs"
 name = "English"
 [language.es]
 name = "Español"
+
+[output.html.code.hidelines]
+rust = "#"
+go = "#"
