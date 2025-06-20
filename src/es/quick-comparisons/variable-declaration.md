@@ -3,13 +3,13 @@
 En Go usualmente para declarar una variable se utiliza la palabra clave `var` 
 seguida del nombre de la variable, el tipo y un valor opcional. Por ejemplo:
 
-```go
+```go,no_run
 var x int = 10
 ```
 En Rust, la declaración de variables es similar, pero se utiliza la palabra 
 clave `let` en lugar de `var`. Por ejemplo:
 
-```rust
+```rust,no_run
 let x: i32 = 10;
 ```
 
@@ -22,14 +22,14 @@ equivalente al tipo `int` en Go.
 En Go, si no se especifica el tipo de la variable, el compilador lo infiere
 automáticamente. Por ejemplo:
 
-```go
+```go,no_run
 var x = 10
 ```
 
 De una manera similar, en Rust también se puede omitir el tipo de la variable
 y el compilador lo inferirá automáticamente:
 
-```rust
+```rust,no_run
 let x = 10;
 ```
 
@@ -45,13 +45,13 @@ fue tomada porque esto ayuda mucho a prevenir errores.
 Si queremos declarar una variable mutable en Rust, debemos usar la palabra
 clave `mut` al declararla. Por ejemplo:
 
-```rust
+```rust,no_run
 let mut x = 10;
 ```
 En este caso, `x` es una variable mutable y podemos cambiar su valor más adelante
 en el código.
 
-```rust
+```rust,no_run
 x = 20;
 ```
 
@@ -64,7 +64,7 @@ funciones, hilos o contextos, no se pueda cambiar su valor accidentalmente.
 En Go, si queremos declarar una variable como inmutable, debemos usar la palabra
 clave `const`. Por ejemplo:
 
-```go
+```go,no_run
 const x = 10
 ```
 
@@ -73,7 +73,7 @@ el código. En Rust, las constantes se declaran de manera similar, pero se
 utiliza la palabra clave `const` y se debe especificar el tipo de dato. Por 
 ejemplo:
 
-```rust
+```rust,no_run
 const CONSTANTE: i32 = 10;
 ```
 

@@ -40,9 +40,9 @@ En Go suele representarse el control de flujo de esta forma:
 # func main() {
 #   x := 0
     if x > 0 {
-        fmt.Println("positivo")
+        fmt.Println("positivo")        
     } else {
-        fmt.Println("negativo")
+        fmt.Println("negativo")        
     }
 # }
 ```
@@ -60,9 +60,9 @@ En Go suele representarse el control de flujo de esta forma:
 # func main() {
 #   x := 1
     if x > 0 {
-        fmt.Println("positivo")
+        fmt.Println("positivo")        
     } else {
-        fmt.Println("negativo")
+        fmt.Println("negativo")        
     }
 # }
 ```
@@ -88,26 +88,26 @@ Rust lo representaría de forma similar:
             <td>
 
 ```rust
-# let x = 0;
-# 
-if x > 0 {
-    println!("positivo");
-} else {
-    println!("negativo");
-}
+    #let x = 0;
+    # 
+    if x > 0 {
+        println!("positivo");        
+    } else {
+        println!("negativo");        
+    }
 ```
 
 </td>
                 <td>
 
 ```rust
-# let x = 1;
-#
-if x > 0 {
-    println!("positivo");
-} else {
-    println!("negativo");
-}
+    # let x = 1;
+    #
+    if x > 0 {
+        println!("positivo");        
+    } else {
+        println!("negativo");        
+    }
 ```
 
 </td>
@@ -117,8 +117,10 @@ if x > 0 {
 
 Pero en Rust podemos además asignar el resultado de la expresión a una variable:
 
-```rust,ignore
-let mensaje = if x > 0 { "positivo" } else { "negativo" };
+```rust
+    #let x = 0;
+    let mensaje = if x > 0 { "positivo" } else { "negativo" };
+    #println!("{mensaje}")
 ```
 
 ### Switch vs Match
@@ -139,24 +141,34 @@ let mensaje = if x > 0 { "positivo" } else { "negativo" };
 Ejemplo en Go:
 
 ```go
-switch day {
-    case "lunes":
-        fmt.Println("Inicio de semana")
-    case "viernes":
-        fmt.Println("Casi fin")
-    default:
-        fmt.Println("Otro día")
-}
+#package main
+#
+#import (
+#	"fmt"
+#)
+# 
+#func main() {
+#    day := "lunes"
+    switch day {
+        case "lunes":
+            fmt.Println("Inicio de semana")
+        case "viernes":
+            fmt.Println("Casi fin")
+        default:
+            fmt.Println("Otro día")
+    }
+#}
 ```
 
 En Rust, el equivalente sería:
 
-```rust,ignore
-match day {
-    "lunes" => println!("Inicio de semana"),
-    "viernes" => println!("Casi fin"),
-    _ => println!("Otro día"),
-}
+```rust
+#     let day = "lunes";
+    match day {
+        "lunes" => println!("Inicio de semana"),
+        "viernes" => println!("Casi fin"),
+        _ => println!("Otro día"),
+    }
 ```
 
 ### Bucles
@@ -171,35 +183,43 @@ match day {
 En Go podríamos hacer lo siguiente:
 
 ```go
-for i := 0; i < 5; i++ {
-    fmt.Println(i)
-}
+#package main
+# 
+#import (
+#	"fmt"
+#)
+# 
+#func main() {
+    for i := 0; i < 5; i++ {
+        fmt.Println(i)
+    }
+#}
 ```
 
 En Rust de forma similar podríamos conseguir el mismo efecto:
 
 ```rust
-for i in 0..5 {
-    println!("{}", i);
-}
+    for i in 0..5 {
+        println!("{}", i);
+    }
 ```
 
 #### Bucle Infinito
 
 En Go un bucle infinito podríamos hacerlo de la siguiente forma:
 
-```go
-for {
-    fmt.Println("infinito")
-}
+```go,no_run
+    for {
+        fmt.Println("infinito")
+    }
 ``` 
 
 Mientras que en Rust usaríamos:
 
-```rust,ignore
-loop {
-    println!("infinito");
-}
+```rust,no_run
+    loop {
+        println!("infinito");
+    }
 ```
 
 #### Bucles con While
@@ -207,11 +227,11 @@ loop {
 Go no tiene bucle `while` pero en Rust si tenemos.
 
 ```rust
-let mut i = 0;
-while i < 5 {
-    println!("{}", i);
-    i += 1;
-}
+    let mut i = 0;
+    while i < 5 {
+        println!("{}", i);
+        i += 1;
+    }
 ```
 
 El bucle `while` puede resultar útil cuando buscamos una condición de corte
@@ -224,16 +244,16 @@ contadores.
 Ambos lenguajes los tienen, pero Rust permite `break` con valor en `loop`:
 
 ```rust
-let mut x = 0;
+    let mut x = 0;
 
-let resultado = loop {
-    if x > 10 {
-        break x * 2; // aquí
-    }
-    x += 1;
-};
+    let resultado = loop {
+        if x > 10 {
+            break x * 2; // aquí
+        }
+        x += 1;
+    };
 
-println!("{resultado}");
+    println!("{resultado}");
 ```
 
 De esta forma se asigna el valor del `break` dentro de `resultado`.
@@ -258,11 +278,11 @@ Eso no existe en Go.
 Rust permite patrones destructurantes muy potentes que no existen en Go.
 
 ```rust
-let punto = (0, 5);
+    let punto = (0, 5);
 
-if let (0, y) = punto {
-    println!("Está sobre el eje Y en {y}");
-}
+    if let (0, y) = punto {
+        println!("Está sobre el eje Y en {y}");
+    }
 ```
 
 En este caso si `opcion` es equivalente a la variante `Some`, se extrae el valor
@@ -275,13 +295,13 @@ Con `match` podríamos hacer algo similar, pero en este caso debemos cubrir amba
 variantes, el `match` es exhaustivo, sino tenemos en cuenta ambos casos
 obtendremos un error en compilación:
 
-```rust
-let color = "azul";
+```rust,editable
+    let color = "azul";
 
-match color {
-    "rojo" => println!("El color es rojo"),
-    "verde" => println!("El color es verde"),
-    otro => println!("Otro color, el cual es {otro}"),
-}
+    match color {
+        "rojo" => println!("El color es rojo"),
+        "verde" => println!("El color es verde"),
+        otro => println!("Otro color, el cual es {otro}"),
+    }
 ```
 

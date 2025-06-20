@@ -282,7 +282,7 @@ function playground_text(playground, hidden = true) {
         });
     }
 
-    Array.from(document.querySelectorAll('pre code.language-go')).forEach(function (block) {
+    Array.from(document.querySelectorAll('pre code.language-go:not(.no_run)')).forEach(function (block) {
         // Add a "Run" button to Go code blocks
         var pre_block = block.parentNode;
         var buttons = pre_block.querySelector(".buttons");

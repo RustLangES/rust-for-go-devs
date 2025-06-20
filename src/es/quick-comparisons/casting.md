@@ -4,7 +4,7 @@ Tanto Go como Rust tienen casteos explicitos, para transformar en Go un tipo de
 dato a otro generalmente se ejecuta una función como puede verse en el ejemplo
 de abajo.
 
-```go
+```go,no_run
 var x int = 10
 var y float64 = float64(x)
 var z int32 = int32(x)
@@ -16,7 +16,7 @@ En Rust también esto también requerira un casting explicito, pe´ro en lugar d
 usando una función con el nombre del tipo, utilizamos directamente la keyword
 `as` como se puede ver en el ejemplo de abajo:
 
-```rust
+```rust,no_run
 let x: i32 = 10;
 let y: f64 = x as f64;
 let z: u8 = x as u8;
@@ -25,7 +25,7 @@ let z: u8 = x as u8;
 Al igual que en Go, Rust al  el operador as trunca o satura en algunos casos 
 (por ejemplo, de i32 a u8). 
 
-```rust
+```rust,no_run
 let big: u32 = 300;
 let small: u8 = big as u8;
 ```
@@ -45,20 +45,20 @@ función asociada/método gracias a ese trait.
 
 Por lo que podríamos hacer 
 
-```rust
+```rust,no_run
 let s = String::from(42);
 ```
 
 Pero también tendríamos el método `.into()`: 
 
 
-```rust
+```rust,no_run
 let s: String = 42.into();
 ```
 
 También podrían haber alternativas drásticamente diferentes como:
 
-```rust
+```rust,no_run
 let s = 42.to_string();
 ```
 
@@ -66,7 +66,7 @@ Sin embargo la forma más segura de hacer una conversión entre tipos es con
 `TryFrom`, ya que con este trait podemos validar si hay algún error durante la 
 conversión:
 
-```rust
+```rust,no_run
 let n: i32 = 300;
 let r: Result<u8, _> = n.try_into();
 ```
@@ -107,7 +107,7 @@ Rust provee estas funciones que te permiten capturar los posibles errores.
 En Go si quisieras hacer lo que hace el `try_from()` o el `try_into()` debes 
 validarlo a mano como con algo así:
 
-```go
+```go,no_run
 if x >= 0 && x <= 255 {
     var y uint8 = uint8(x)
     fmt.Println("Seguro:", y)
@@ -118,7 +118,7 @@ if x >= 0 && x <= 255 {
 
 En Rust si inferimos el error podríamos tener algo como esto:
 
-```rust
+```rust,no_run
 let n: i32 = 300;
 let r = u8::try_from(n);
 ```
