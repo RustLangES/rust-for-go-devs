@@ -1,0 +1,49 @@
+name: Deploy mdBook site to Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - es-translation
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mdbook
+        run: |
+          mkdir bin
+          curl -sSL https://github.com/RustLangES/mdBook/releases/download/v0.4.36-localization-v0.6/mdbook-v0.4.36-localization-v0.6-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
+          echo "$(pwd)/bin" >> ${GITHUB_PATH}
+      - name: Build with mdBook
+        run: mdbook build
+      - name: Copying the index
+        run: cp ./index.html ./book/index.html
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./book
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ./artifact --project-name=go-book
