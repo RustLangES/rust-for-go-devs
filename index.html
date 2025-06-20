@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirigiendo...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      const lang = navigator.language || navigator.userLanguage;
+      const baseLang = lang.split('-')[0];
+      
+      if (baseLang === 'es') {
+        window.location.replace('./es');
+      } else {
+        window.location.replace('./en');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to the appropriate language version...</p>
+</body>
+</html>
