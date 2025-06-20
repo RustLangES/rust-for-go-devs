@@ -35,8 +35,9 @@ En Rust no hay panic en tiempo de ejecución, pero puede haber pérdida silencio
 de datos si no se controla correctamente.
 
 Rust sin embargo además de este casteo rápido provee otros tipos de casteos que 
-son más correctos. Seguramente lo veamos más adelante el tema pero Rust provee
-formas estandarizadas de trabajar la conversión de tipos con el trait `From`.
+son más correctos. Seguramente este tema lo veremos más adelante pero Rust 
+provee formas estandarizadas de trabajar la conversión de tipos con el trait 
+`From`.
 Profundizaremos más adelante acerca de esto.
 
 Retomando el tema la mayoría de tipos de datos poseen una 

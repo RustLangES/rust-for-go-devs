@@ -33,7 +33,7 @@ Decimos "casi automática" porque es posible que cuando escribas código en Rust
 termines no pensando en la memoria, es un concepto muy de fondo que en la 
 mayoría de los casos no tendrás que pensar. Pero en algunos casos, como cuando
 estés escribiendo código de alto rendimiento o cuando estés trabajando con
-código de bajo nivel, es posible que tengas que quieras tenerlo en cuenta y 
+código de bajo nivel, es posible que tengas o que quieras tenerlo en cuenta y 
 puedas hacerlo. Rust te da las herramientas para hacerlo, pero no te obliga a
 hacerlo. Esto es lo que hace que Rust sea un lenguaje tan poderoso y flexible.
 Esto en algunas ocasiones puede resultar extremadamente útil, como se menciona
