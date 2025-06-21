@@ -57,6 +57,9 @@ fn getCoordinates() -> (i32, i32) {
 }
 ```
 
+Aunque esto es un pequeño spoiler de lo que explicaremos acerca de las 
+funciones más adelante.
+
 ## Arrays / Slices / Vectores
 
 ### Arrays
@@ -162,7 +165,7 @@ Deberá fallar en tiempo de ejecución, Rust para solucionar nos da el método
 ```
 
 El método `get` nos devolverá un `Option<T>` profundizaremos sobre este tipo
-en el siguiente capitulo.
+en los siguientes capítulos.
 
 Por otro lado hay que aclarar que tanto los array, como los slices y los `Vec`,
 son tipos de datos que solo almacenan un único tipo de dato dentro, como pueden
