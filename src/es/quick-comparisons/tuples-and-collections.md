@@ -51,13 +51,15 @@ forma más sencilla:
 Si quisiéramos declarar el valor de retorno de una función como una tupla 
 podría ser algo así:
 
-```rust,no_run
+```rust,no_run,ignore
 fn getCoordinates() -> (i32, i32) {
     (10, 20)
 }
 ```
 
 ## Arrays / Slices / Vectores
+
+### Arrays
 
 Go utiliza la misma sintaxis para los tres tipos de datos
 
@@ -99,6 +101,20 @@ Los arreglos no se pueden redimensionar, tiene un tamaño fijo, podemos modifica
 las posiciones si declaramos el arreglo como mutable, pero no podemos agregar 
 nuevos elementos.
 
+El que tengan un tamaño fijo ayuda a que Rust nos diga si estamos accediendo a 
+una posición del arreglo inexistente, es decir si estamos saliendo del rango
+de elementos que están dentro del arreglo:
+
+```rust
+    let arr = [7, 5, 4];
+
+    arr[99];
+```
+
+Este error sera encontrado en tiempo de compilación.
+
+### Slices
+
 Consideramos a los slices como una referencia a un rango de elementos:
 
 ```rust
@@ -108,23 +124,52 @@ Consideramos a los slices como una referencia a un rango de elementos:
     #println!("{slice:?}")
 ```
 
+Al igual que los array convencionales, si intentamos pasar un rango invalido
+obtendremos un error en tiempo de compilación.
+
+### Vectores
+
 Además Rust tiene el tipo de dato `Vec`, el cual es un tipo de dato dinamico,
 esta colección puede ser modificada agregando nuevos elementos, podemos crear
 `Vec` de varias formas, pero una de las más convencionales es con la macro 
 `vec!`:
 
 ```rust
-let mut v = vec![1, 2, 3];
-v.push(4);
-#println!("{v:?}")
+    let mut v = vec![1, 2, 3];
+    v.push(4);
+    #println!("{v:?}")
 ```
 
 Al declarar como mutable podemos utilizar el método `push` para agregar 
 elementos dentro. 
 
+Sin embargo al ser dinamico Rust no puede calcular en tiempo de compilación que
+valores serán cargados en memoría durante la ejecución, es por eso que este 
+código:
+
+```rust
+    let mut v = vec![1, 2, 3];
+    v[99];
+```
+
+Deberá fallar en tiempo de ejecución, Rust para solucionar nos da el método 
+`get` que es lo que deberemos de usar para obtener valores dentro de un arreglo.
+
+```rust
+    let mut v = vec![1, 2, 3];
+    v.get(99);
+    #println!("{:?}", v.get(99));
+```
+
+El método `get` nos devolverá un `Option<T>` profundizaremos sobre este tipo
+en el siguiente capitulo.
+
 Por otro lado hay que aclarar que tanto los array, como los slices y los `Vec`,
-son tipos de datos que solo almacenan un único tipo de dato dentro, para 
-utilizar más de un tipo de dato posiblemente deberíamos de utilizar una tupla.
+son tipos de datos que solo almacenan un único tipo de dato dentro, como pueden
+ver en los ejemplos, entonces solo podemos almacenar o i32, Strings, flotantes, 
+o lo que necesitemos, pero unicamente elementos que sean de ese tipo de dato,
+para utilizar más de un tipo de dato posiblemente deberíamos de utilizar una 
+tupla o usar otro tipo de dato.
 
 ### Mapas / Diccionarios / HashMaps
 
@@ -153,11 +198,11 @@ En Go hariamos algo como esto:
 Mientras que el mismo ejemplo en Rust seria así:
 
 ```rust
-#use std::collections::HashMap;
-#
-let mut mapa = HashMap::new();
-mapa.insert("manzana", 3);
-mapa.insert("naranja", 5);
+    #use std::collections::HashMap;
+    #
+    let mut mapa = HashMap::new();
+    mapa.insert("manzana", 3);
+    mapa.insert("naranja", 5);
 
-println!("Hay {} manzanas", mapa.get("manzana").unwrap());
+    println!("Hay {} manzanas", mapa.get("manzana").unwrap());
 ```
