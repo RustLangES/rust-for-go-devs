@@ -1,6 +1,6 @@
 # Rust para Go Devs
 
-Libro ✨
+[Libro ✨](https://go-book.rustlang-es.org)
 
 Para ejecutar:
 
