@@ -121,7 +121,7 @@ function playground_text(playground, hidden = true) {
         formData.append('body', text);
         formData.append('withVet', 'true');
 
-        fetch_with_timeout('https://test.cors.workers.dev/?https://go.dev/_/compile?backend=', {
+        fetch_with_timeout('https://proxy-cors.rustlanges.workers.dev/?https://go.dev/_/compile?backend=', {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
