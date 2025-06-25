@@ -1,0 +1,6 @@
+.editable > * {
+    margin: 1rem;
+}
+.editable.hljs.ace_editor {
+    padding: 1rem;;
+}

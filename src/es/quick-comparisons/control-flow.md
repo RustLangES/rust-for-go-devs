@@ -301,7 +301,42 @@ obtendremos un error en compilación:
     match color {
         "rojo" => println!("El color es rojo"),
         "verde" => println!("El color es verde"),
-        otro => println!("Otro color, el cual es {otro}"),
+        otro => println!("Otro color, el cual es {otro}"), // <-- Eliminar
     }
 ```
 
+Si has eliminado la linea, veras el error, esto es porque las variantes del tipo 
+slice String son infinitas y solo estamos contemplando el caso en que sea
+`"rojo"` o `"verde"`.
+
+Rust nos sugiere agregar el caso por default que puede ser usando `_` o 
+asignando el posible valor a una variable, como tenias previamente en la 
+variable `otro` que posiblemente hayas eliminado.
+
+Un caso donde tengamos un scope más pequeño podría ser usar pattern matching
+para determinar rangos numéricos:
+
+```rust,editable
+    let mi_numero_favorito = 2;
+
+    match mi_numero_favorito {
+        0 | 1 => println!("Te gusta el binario!"),
+        2 => println!("Simple"),
+        3..=6 => println!("Un número entre 3 y 6 inclusive"),
+        caso_raro if caso_raro % 2 == 0 => {
+            println!("Un número par mayor a 6: {caso_raro}");
+        },
+        42 => println!("El sentido de la vida, el universo y todo lo demás"),
+        ..0 => println!("Un número negativo 😭"),
+        6.. => println!("De seis al infinito!")
+    }
+```
+
+De esta forma nosotros sabemos que las posibilidades son desde el valor minimo 
+de `i32` hasta el máximo, y podemos cubrir todos los casos, de forma en que 
+no es necesario usar el valor por defecto para cubrir casos no contemplados.
+
+Si removemos el caso del `0 | 1`, `2` o el rango del `3..=6`, Rust nos avisará
+que no estamos cubriendo todos los casos posibles.
+
+La exhaustiva en su máximo esplendor.
