@@ -4,3 +4,6 @@
 .editable.hljs.ace_editor {
     padding: 1rem;;
 }
+:root {
+  --pagetoc-fontsize: 0.85em;
+}

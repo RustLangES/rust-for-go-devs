@@ -16,6 +16,8 @@ name = "Español"
 rust = "#"
 go = "#"
 
+[preprocessor.pagetoc]
+
 [output.html.playground]
 editable = true
 
@@ -25,4 +27,5 @@ site-url = "https://go-book.rustlang-es.org"
 git-repository-url = "https://github.com/RustLangES/rust-para-go-devs"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/RustLangES/rust-para-go-devs/edit/main/{path}"
-additional-css = ["theme/extra.css"]
+additional-css = ["theme/extra.css", "theme/pagetoc.css"]
+additional-js = ["theme/pagetoc.js"]
