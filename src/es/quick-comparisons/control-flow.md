@@ -260,7 +260,7 @@ De esta forma se asigna el valor del `break` dentro de `resultado`.
 
 Eso no existe en Go.
 
-----
+---
 
 ### Comparación rápida entre los bucles de Rust
 
@@ -270,6 +270,8 @@ Eso no existe en Go.
 | Esperar condición que no depende de contador | `while`          | Más expresivo para condiciones dinámicas |
 | Leer hasta terminar input o streams de datos | `while`          | El número de iteraciones es desconocido  |
 | Ejecutar al menos una vez siempre            | `loop` + `break` | O en Go: `for {}` con `break` manual     |
+
+</br>
 
 ---
 

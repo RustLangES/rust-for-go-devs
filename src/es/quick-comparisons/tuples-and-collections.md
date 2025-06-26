@@ -57,9 +57,6 @@ fn getCoordinates() -> (i32, i32) {
 }
 ```
 
-Aunque esto es un pequeño spoiler de lo que explicaremos acerca de las 
-funciones más adelante.
-
 ## Arrays / Slices / Vectores
 
 ### Arrays
