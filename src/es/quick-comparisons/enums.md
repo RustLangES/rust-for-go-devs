@@ -48,7 +48,7 @@ etc.
 Si desearamos algo más complejo, como por ejemplo un enum con un valor asociado
 podríamos hacerlo de la siguiente manera:
 
-```go
+```go,no_run
 type Mensaje interface{}
 
 type Saludar struct {
@@ -92,7 +92,7 @@ exhaustividad en el manejo de casos.
 
 En Rust definiriamos un enum de la siguiente manera:
 
-```rust
+```rust,no_run
 enum Mensaje {
     Saludar(String),
     Mover { x: i32, y: i32 },
