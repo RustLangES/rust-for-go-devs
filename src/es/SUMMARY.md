@@ -15,3 +15,4 @@
     - [Tuplas y Colecciones](./quick-comparisons/tuples-and-collections.md)
     - [Casting](./quick-comparisons/casting.md)
     - [Nulabilidad y Opcionalidad](./quick-comparisons/nullability-and-optionality.md)
+    - [Manejo de errores](./quick-comparisons/error-handling.md)

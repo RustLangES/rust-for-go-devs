@@ -8,7 +8,7 @@ con respecto a este tema.
 ## Ejemplos rápidos
 
 En Go suele representarse la nubilidad de esta forma:
-```go
+```go,no_run
 some := 2 // short declaration
 var some int = 2 
 var none *int = nil
@@ -17,7 +17,7 @@ var none *int = nil
 Hay varias formas de declarar la variable.
 Esto en Rust se representaria como:
 
-```rust
+```rust,no_run
 let some = 1; // Short
 let some: i32 = 1; // declaración con tipo
 let some = Some(1); // Con inferencia
@@ -30,6 +30,10 @@ Por lo que una vez que logremos saber si el contenido es o no un valor valido,
 podemos usar diversos metodos para utilizar el contenido.
 
 ```go
+#package main
+#
+#import "fmt"
+#
 func main() {
     var username *string = nil
     if username == nil {
@@ -68,6 +72,10 @@ utilizando `nil`, lo usamos para representar un valor que es faltante, ausente
 o lógicamente no inicializado. Por ejemplo:
 
 ```go
+#package main
+#
+#import "fmt"
+#
 func search(id int) *string {
     if id == 1 {
         username := "Admin"
@@ -110,7 +118,7 @@ Rust sin embargo gracias a estas dos variantes, logra asegurar que estes
 teniendo en cuenta ambos casos, internamente este tipo de dato solamente se 
 representa como un enum.
 
-```rust
+```rust,no_run
 enum Option<T> {
     Some(T),
     None
