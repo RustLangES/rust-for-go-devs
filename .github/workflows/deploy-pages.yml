@@ -28,7 +28,7 @@ jobs:
           curl -sSL https://github.com/RustLangES/mdBook/releases/download/v0.4.36-localization-v0.6/mdbook-v0.4.36-localization-v0.6-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
           echo "$(pwd)/bin" >> ${GITHUB_PATH}
       - name: Build with mdBook
-        run: mdbook build
+        run: mdbook build --language es
       - name: Copying the index
         run: cp ./index.html ./book/index.html
       - name: Upload artifact
