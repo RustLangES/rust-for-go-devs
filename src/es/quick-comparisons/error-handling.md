@@ -178,4 +178,118 @@ De esta forma estamos manejando el posible panico.
 
 ---
 
+## Errores recuperables
+
+Cuando hablamos de "Errores recuperables" nos referimos a errores son errores 
+esperables como pueden ser errores del tipo archivo no encontrado, conexión 
+rechazada, división por cero, etc.
+No son bugs, sino situaciones previstas que el programa puede manejar.
+
+### 🐹 En Go
+
+Go se usa una convención: las funciones devuelven `(T, error)` donde `T` es el 
+tipo de retorno y `error` es un tipo de error que representa el error
+ocurrido, si no hay error, el valor de `error` es `nil`.
+Esto es una convención que se sigue en todo el lenguaje, no es obligatorio pero
+es la forma más común de manejar errores.
+Si la función falla, retorna un error, si no falla, retorna el valor esperado
+y `nil` como error.
+Esto es una forma de manejar errores que es bastante simple y directa, pero
+puede resultar un poco verbosa y repetitiva.
+Por ejemplo, si tenemos una función que divide dos números, podría verse así:
+
+```go
+#package main
+#
+#import "fmt"
+#
+func dividir(a, b int) (int, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("división por cero")
+    }
+    return a / b, nil
+}
+#
+#func main() {
+#    resultado, err := dividir(10, 0)
+#    if err != nil {
+#        fmt.Println("Error:", err)
+#        return
+#    }
+#    fmt.Println("Resultado:", resultado)
+#}
+```
+
+Donde si `b` es cero, retornamos un error, si no, retornamos el resultado
+y `nil` como error.
+
+### 🦀 En Rust
+
+Rust usa el tipo `Result<T, E>` para manejar errores recuperables, donde `T` es 
+el tipo de retorno y `E` es el tipo de error.
+El tipo `Result` es un enum que puede ser `Ok(T)` o `Err(E)`:
+
+```rust
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+
+Lo que permite manejar errores de forma más explícita y segura, nos garantiza 
+seguridad, o falla o nos devuelve el resultado esperado pero imposibilita el
+obtener ambos valores.
+Por ejemplo, si tenemos una función que divide dos números, podría verse así:
+
+```rust
+fn dividir(a: i32, b: i32) -> Result<i32, String> {
+    if b == 0 {
+        Err("División por cero".to_string())
+    } else {
+        Ok(a / b)
+    }
+}
+#
+#fn main() {
+#    match dividir(10, 0) {
+#        Ok(resultado) => println!("Resultado: {}", resultado),
+#        Err(e) => println!("Error: {}", e),
+#    }
+#}
+```
+
+En este caso, si `b` es cero, retornamos un `Err` con un mensaje de error,
+si no, retornamos un `Ok` con el resultado de la división.
+
+Es más explicito el path al decir que algo es un error, y no es necesario
+retornar un valor adicional como en Go, ya que el `Result` ya nos indica si
+hubo un error o no.
+
+En Go funciona como una tupla en Rust como un enum.
+
+Sin embargo en Rust los errores no se pueden ignorar, si no se maneja el 
+`Result`, el compilador nos dará un error de compilación, lo que nos obliga
+a manejar los errores de forma explícita.
+
+Este es el manejo de errores más simple en Rust, y se encuentra en esta sección
+porque es facilmente comparable con el manejo de errores en Go.
+
+Sin embargo, Rust tiene un sistema de manejo de errores mucho más avanzado y
+flexible que permite manejar errores de forma más eficiente, permitiendo 
+propagación (una de las funcionalidades más queridas en Go), conversiones de 
+tipo y dando seguridad en todos los casos, todo esto lo veremos en la sección
+de Manejo de Errores Avanzados.
+
+### Comparativa de manejo de errores
+
+Aquí una tabla comparativa entre Rust y Go para el manejo de errores
+
+|                          | **Rust**                          | **Go**                            |
+| ------------------------ | --------------------------------- | --------------------------------- |
+| ¿Cómo se manejan?        | `Result<T, E>`                    | `(T, error)`                      |
+| ¿Qué tipo de error?      | `enum Result<T, E>`               | `error` (interfaz)                |
+| ¿Obliga a manejarlo?     | ✅ Sí (el compilador lo exige)    | ❌ No (convención `if err != nil`)|
+| ¿Qué pasa si lo ignorás? | ⚠️ Warning o error de compilación | 🚫 Nada, se puede ignorar         |
+| ¿Propagación de errores? | ✅                                | ✅ Con `return` o `defer`         |
+
 
