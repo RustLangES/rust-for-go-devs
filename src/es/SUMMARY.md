@@ -16,3 +16,5 @@
     - [Casting](./quick-comparisons/casting.md)
     - [Nulabilidad y Opcionalidad](./quick-comparisons/nullability-and-optionality.md)
     - [Manejo de errores](./quick-comparisons/error-handling.md)
+- [Fundamental](./fundamental.md)
+    - [Ownership y Borrowing](./fundamental/ownership-and-borrowing.md)
