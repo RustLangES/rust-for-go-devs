@@ -18,3 +18,4 @@
     - [Manejo de errores](./quick-comparisons/error-handling.md)
 - [Fundamental](./fundamental.md)
     - [Ownership y Borrowing](./fundamental/ownership-and-borrowing.md)
+    - [Organización de código](./fundamental/code-organization.md)

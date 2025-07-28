@@ -6,4 +6,34 @@
 }
 :root {
   --pagetoc-fontsize: 0.85em;
+  --info-border: rgb(0 182 255);
+}
+
+.info {
+    margin: 20px;
+    padding: 0 20px;
+    border-inline-start: 2px solid var(--info-border);
+    border-bottom: 7px solid var(--info-border);
+}
+
+.info > * {
+  padding-top: 14px
+}
+
+.info:before {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    margin-inline-start: calc(-1.5rem - 19px);
+    /* content: "ⓘ"; */
+    content: "i";
+    border: 3px solid var(--info-border);
+    border-radius: 100%;
+    margin-bottom: 2rem;
+    /* margin-top: 2rem; */
+    text-align: center;
+    background-color: var(--bg);
+    color: var(--info-border);
+    font-weight: bold;
+    font-size: 1.5rem;
 }
