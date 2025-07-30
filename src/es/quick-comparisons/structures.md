@@ -5,7 +5,7 @@ Las estructuras en Rust y Go comparten algunas similitudes superficiales:
 - Ambas se definen con la palabra clave `struct`.
 - Ambas se usan para modelar tipos compuestos.
 - Ambas pueden tener métodos asociados (aunque se definen de forma diferente).
-- Pueden implementar múltiples `traits` en Rust de la misma manera que pueden 
+- Pueden implementar múltiples [`traits`] en Rust de la misma manera que pueden 
   implementar múltiples interfaces en Go.
 - Se almacenan en la pila (stack) por defecto.
 
@@ -150,7 +150,7 @@ como en Go:
 
 - No hay herencia de structs.
 - No hay clases.
-- El polimorfismo se logra por composición y traits/interfaces.
+- El polimorfismo se logra por composición y [traits]/interfaces.
 
 ## Métodos y Mutabilidad
 
@@ -366,4 +366,7 @@ func main() {
 ```
 
 
-Veremos más acerca de los `traits` y los derivables más adelante.
+Veremos más acerca de los [`traits`] y los derivables más adelante.
+
+[`traits`]: ./../new-concepts/traits.md
+[traits]: ./../new-concepts/traits.md

@@ -14,18 +14,19 @@
     padding: 0 20px;
     border-inline-start: 2px solid var(--info-border);
     border-bottom: 7px solid var(--info-border);
+    position: relative;
+    padding-left: 25px;
 }
 
 .info > * {
   padding-top: 14px
 }
 
-.info:before {
+.info::before {
     position: absolute;
     width: 2rem;
     height: 2rem;
-    margin-inline-start: calc(-1.5rem - 19px);
-    /* content: "ⓘ"; */
+    margin-inline-start: calc(-2rem - 19px);
     content: "i";
     border: 3px solid var(--info-border);
     border-radius: 100%;
@@ -36,4 +37,54 @@
     color: var(--info-border);
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+/* Ferris into the right bottom side */
+.info::after {
+  content: "";
+  background-image: url("/images/ferris-love.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  pointer-events: none;
+}
+
+.info.ferris-doubt::after {
+  background-image: url("/images/ferris-doubt.svg");
+}
+
+.info.ferris-love::after {
+  background-image: url("/images/ferris-love.png");
+}
+
+.info.important {
+  border-color: #986ee2;
+  background-color: rgba(152, 110, 226, 0.1);
+}
+
+.info.important::before {
+  background-image: url("/images/important.svg");
+  fill: #986ee2;
+  color: #986ee2;
+  border-color: #986ee2;
+  content: "";
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 5px;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-inline-start: calc(-2rem - 23px);
+}
+
+summary {
+  padding: 2rem;
+  background: var(--sidebar-bg);
+  margin-left: -25px;
+  margin-right: -2rem;
+  color: var(--sidebar-fg);
 }

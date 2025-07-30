@@ -22,3 +22,4 @@
     - [Gestión de dependencias](./fundamental/dependency-managment.md)
 - [Conceptos nuevos](./new-concepts.md)
     - [Traits](./new-concepts/traits.md)
+        - [Trait bounds y Polimorfismo](./new-concepts/traits/trait-bounds-and-polimorfism.md)
