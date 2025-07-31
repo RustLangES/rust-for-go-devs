@@ -22,4 +22,5 @@
     - [Gestión de dependencias](./fundamental/dependency-managment.md)
 - [Conceptos nuevos](./new-concepts.md)
     - [Traits](./new-concepts/traits.md)
-        - [Trait bounds y Polimorfismo](./new-concepts/traits/trait-bounds-and-polimorfism.md)
+    - [Genéricos, Traits y Dispatch](./new-concepts/generics-traits-and-static-dispatch.md)
+    - [Smart Pointers y Heap Allocation](./new-concepts/smart-pointers.md)

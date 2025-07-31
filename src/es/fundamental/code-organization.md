@@ -457,7 +457,7 @@ Al hacer que `services/mod.rs` también exporte el modulo de `auth` estamos
 diciendo que un nivel superior puede acceder a `services/auth` y todo lo `pub`
 dentro.
 
-A si mismo si estuvieramos haciendo una libreria (adelantandonos a algo que
+A si mismo si estuviéramos haciendo una libreria (adelantandonos a algo que
 veremos más adelante) y la libreria en el punto de entrada también exporta ese
 modulo, en este caso `services`, lo que sucederia es que desde donde se utilice
 la libreria podremos acceder a todo lo `pub` dentro de `nuestra_lib/services/auth`.

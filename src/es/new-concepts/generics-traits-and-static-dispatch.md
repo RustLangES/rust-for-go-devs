@@ -6,8 +6,85 @@ funciones, estructuras y tipos que funcionan con múltiples tipos sin duplicar
 la lógica.
 
 Antes de los genéricos, en Go era común ver duplicación de funciones para 
-distintos tipos:
+distintos tipos o declaraciones de tipos utilizando interfaces.
 
+Pero también podríamos crear un único tipo de dato, posteriormente a la llegada 
+de Go 1.8 podemos empezar a encontrarnos código así:
+
+{{#tabs }}
+{{#tab name="Go antes de v1.8" }}
+
+```go
+#package main
+#
+#import "fmt"
+#
+type Caja struct {
+    valor interface{}
+}
+#
+#func main() {
+#    c := Caja{valor: 42}
+#    fmt.Println(c.valor) // 42
+#
+#    c2 := Caja{valor: "hola"}
+#    fmt.Println(c2.valor) // hola
+#
+#    // Si querés operar con el valor, tenés que hacer type assertion
+#    if v, ok := c.valor.(int); ok {
+#        fmt.Println(v + 10) // 52
+#    } else {
+#        fmt.Println("No es un int")
+#    }
+#}
+```
+
+{{#endtab }}
+{{#tab name="Go despues de v1.8" }}
+
+```go
+#package main
+#
+#import "fmt"
+#
+type Caja[T any] struct {
+    valor T
+}
+#
+#func main() {
+#    c := Caja[int]{valor: 42}
+#    fmt.Println(c.valor)
+#
+#    c2 := Caja[string]{valor: "hola"}
+#    fmt.Println(c2.valor)
+#}
+```
+{{#endtab }}
+{{#endtabs }}
+
+Rust tiene desde la primera versión genéricos por lo que no existe tal división
+y el mismo código de ejemplo se podría ver de la siguiente forma:
+
+```rust
+struct Caja<T> {
+    valor: T,
+}
+#
+#fn main() {
+#    let c = Caja { valor: 42 };
+#    println!("{}", c.valor);
+#
+#    let c2 = Caja { valor: String::from("hola") };
+#    println!("{}", c2.valor);
+#}
+```
+
+
+En el caso de las funciones genéricas con Go obtendríamos un código similar a 
+este:
+
+{{#tabs }}
+{{#tab name="Go antes de v1.8" }}
 ```go
 func SumarInts(a, b int) int {
     return a + b
@@ -18,16 +95,21 @@ func SumarFloats(a, b float64) float64 {
 }
 ```
 
-Con genéricos, esa duplicación desaparece:
-
+{{#endtab }}
+{{#tab name="Go despues de v1.8" }}
 ```go
 func Sumar[T int | float64](a, b T) T {
     return a + b
 }
 ```
+{{#endtab }}
+{{#endtabs }}
 
-A diferencia de Go, Rust no se suele especificar el tipo de dato en el genérico,
-lo que se especifica es el comportamiento del tipo de dato.
+A diferencia de Go, en Rust no se suele especificar el tipo de dato en el 
+genérico, lo que se especifica es el comportamiento del tipo de dato.
+
+Rust evita en multiples aspectos las concreciones, lo cual nos permite código
+más abstraído.
 
 <div class="info">
 
@@ -59,8 +141,8 @@ fn sumar(a: &Numero, b: &Numero) -> Numero {
 }
 ```
 
-No se suele discriminar por `struct` o variante sino por el `trait`, el 
-comportamiento como tal porque si sabemos los tipos concretos que debemos
+No se suele discriminar por `struct` o variante de `enum` sino por el `trait`, 
+el comportamiento como tal porque si sabemos los tipos concretos que debemos
 utilizar entonces no necesitamos genéricos.
 
 También **es posible que en el futuro** esta feature de Go y muchos otros 
@@ -72,13 +154,14 @@ discusiones oficiales.
 
 </details>
 
-O simplemente como dijimos al comienzo dos funciones.
-
+Si hablamos de concreciones es posible que con crear las funciones a mano
+también sea una buena idea en lugar de usar un genérico una lista de 
+tipos de datos específicos.
 
 </div>
 
-Es por eso que esto tiene relación con los `traits` como veremos un poco más 
-abajo.
+Debido a esta idea de buscar abstracciones es por eso que esto tiene relación 
+con los `traits` como veremos un poco más abajo con los `trait bounds`.
 
 ## Polimorfismo con `static dispatch`
 
@@ -239,7 +322,7 @@ fn procesar<T>(io: T) where T: Read + Write {
 Los trait bounds se pueden componer de distintas formas. Esto permite crear 
 funciones que trabajen con tipos muy específicos sin perder generalidad.
 
-A medida que avancemos en nuestro expertis en Rust podremos notar que esto
+A medida que avancemos en nuestro expertiz en Rust podremos notar que esto
 nos ayuda a generar APIs de librerias y experiencia de desarrollo realmente 
 buena, simplificando muchas cosas.
 
