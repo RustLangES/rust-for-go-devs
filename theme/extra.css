@@ -42,7 +42,7 @@
 /* Ferris into the right bottom side */
 .info::after {
   content: "";
-  background-image: url("/images/ferris-love.png");
+  background-image: url("../../images/ferris-love.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 5rem;
@@ -54,11 +54,11 @@
 }
 
 .info.ferris-doubt::after {
-  background-image: url("/images/ferris-doubt.svg");
+  background-image: url("../../images/ferris-doubt.svg");
 }
 
 .info.ferris-love::after {
-  background-image: url("/images/ferris-love.png");
+  background-image: url("../../images/ferris-love.png");
 }
 
 .info.important {
@@ -67,7 +67,7 @@
 }
 
 .info.important::before {
-  background-image: url("/images/important.svg");
+  background-image: url("../../images/important.svg");
   fill: #986ee2;
   color: #986ee2;
   border-color: #986ee2;
