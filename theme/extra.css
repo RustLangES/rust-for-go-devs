@@ -16,6 +16,7 @@
     border-bottom: 7px solid var(--info-border);
     position: relative;
     padding-left: 25px;
+    min-height: 40px;
 }
 
 .info > * {
@@ -60,6 +61,12 @@
   background-image: url("../images/ferris-love.png");
 }
 
+.info.ferris-scientific::after {
+  background-image: url("../images/ferris-scientific.png");
+  width: 10rem;
+  height: 7rem;
+}
+
 .info.important {
   border-color: #986ee2;
   background-color: rgba(152, 110, 226, 0.1);
@@ -86,4 +93,24 @@ summary {
   margin-left: -25px;
   margin-right: -2rem;
   color: var(--sidebar-fg);
+}
+
+.info.play::before {
+  background-image: url("../images/play.svg");
+  fill: #347D39;
+  color: #347D39;
+  border-color: #347D39;
+  content: "";
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 5px;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-inline-start: calc(-2rem - 23px);
+}
+.info.play {
+  border-color: #347D39;
+  background-color: rgb(110 226 220 / 10%);
+  margin-top: 0;
 }

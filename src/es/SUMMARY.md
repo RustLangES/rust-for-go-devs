@@ -24,3 +24,4 @@
     - [Traits](./new-concepts/traits.md)
     - [Genéricos, Traits y Dispatch](./new-concepts/generics-traits-and-static-dispatch.md)
     - [Smart Pointers y Heap Allocation](./new-concepts/smart-pointers.md)
+    - [Mutabilidad Interna](./new-concepts/interior-mutability.md)
