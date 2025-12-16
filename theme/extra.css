@@ -114,3 +114,25 @@ summary {
   background-color: rgb(110 226 220 / 10%);
   margin-top: 0;
 }
+
+.quote {
+    margin: 20px;
+    padding: 0 20px;
+    position: relative;
+    padding-left: 25px;
+    min-height: 40px;
+}
+
+
+.quote.michael::after {
+  content: "";
+  background-image: url("../images/michael.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 8rem;
+  height: 8rem;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  pointer-events: none;
+}
