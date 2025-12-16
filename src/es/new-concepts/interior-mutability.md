@@ -25,6 +25,7 @@ a controlar el acceso a los datos, ni delimitar las posibilidades de un objeto.
 ```go
 package main
 import "fmt"
+
 func main() {
     x := 10
     p := &x   // p apunta a x
@@ -186,7 +187,7 @@ abstracción más realista:
 {{#tabs }}
 {{#tab name="main.rs" }}
 
-```rust
+```rust,no_run
 mod client;
 use client::Client;
 use std::thread::sleep;
@@ -209,7 +210,7 @@ fn main() {
 {{#endtab }}
 {{#tab name="client.rs" }}
 
-```rust
+```rust,ignore
 use std::cell::RefCell;
 use std::time::{Duration, Instant};
 
